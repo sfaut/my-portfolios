@@ -29,7 +29,7 @@ return new class extends Migration
                 COALESCE(SUM(o.amount), 0) AS operation_balance
             FROM accounts AS a
             LEFT OUTER JOIN operations AS o ON a.id = o.account_id
-            GROUP BY 1, 2, 3
+            GROUP BY 1, 2
             SQL
         );
 
