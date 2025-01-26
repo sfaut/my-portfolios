@@ -22,7 +22,7 @@ return new class extends Migration
             <<<SQL
             CREATE VIEW account_reports AS
             SELECT ALL
-                a.id, a.name, a.is_active,
+                a.id, a.name,
                 COUNT(o.id) AS operation_count,
                 MIN(o.delivery_at) AS operation_first_at,
                 MAX(o.delivery_at) AS operation_last_at,
