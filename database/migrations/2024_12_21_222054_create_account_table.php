@@ -12,13 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', length: 50);
             $table->string('description', length: 1000)->default('');
-            $table->foreignId('portfolio_id');
+            $table->foreignId('portfolio_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps(precision: 6);
             $table->softDeletes(precision: 6);
-
-            $table->foreign('portfolio_id')
-                ->references('id')->on('portfolio')
-                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

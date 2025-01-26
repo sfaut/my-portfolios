@@ -12,15 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', length: 50);
             $table->string('description', length: 1000)->default('');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps(precision: 6);
             $table->softDeletes(precision: 6);
-
-            $table->unique(['user_id', 'name']);
-
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

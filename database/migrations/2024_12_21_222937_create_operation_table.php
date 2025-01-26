@@ -14,12 +14,8 @@ return new class extends Migration
             $table->string('description', length: 100);
             $table->decimal('amount', total: 10, places: 2);
             $table->date('delivery_at')->comment('Date de livraison du produit ou du service');
-            $table->foreignId('account_id');
+            $table->foreignId('account_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps(precision: 6);
-
-            $table->foreign('account_id')
-                ->references('id')->on('account')
-                ->onUpdate('cascade')->onDelete('cascade');
         });
 
         DB::statement(
