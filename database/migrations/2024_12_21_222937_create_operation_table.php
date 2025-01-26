@@ -39,7 +39,7 @@ return new class extends Migration
             WITH dataset AS (
                 -- CTE pour calcul du cumul global avant filtrage
                 SELECT ALL
-                    operation.*,
+                    operations.*,
                     SUM(amount) OVER (
                         PARTITION BY account_id
                         ORDER BY delivery_at ASC, id ASC
