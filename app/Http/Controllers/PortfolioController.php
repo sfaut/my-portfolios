@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PortfolioRequest;
-use App\Models\Account;
 use App\Models\Portfolio;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -24,41 +22,45 @@ class PortfolioController extends Controller
         return view('portfolio.create');
     }
 
-    public function store(PortfolioRequest $request): RedirectResponse
+    public function store(PortfolioRequest $request)
     {
-        $request->validated();
-        $user_id = auth()->user()->id;
-        $data = $request->merge(['user_id' => $user_id])->all(['name', 'description', 'user_id']);
-        $portfolio = Portfolio::create($data);
+        $data = $request->validated();
 
-        return to_route('portfolio.show', $portfolio)
-            ->with('message', "Le nouveau portfolio a bien été créé.\r\nVous pouvez maintenant y ajouter des comptes.");
+        auth()->user()->portfolios()->create($data);
+
+        return to_route('portfolio.index')
+            ->with('message', trans('portfolio.store.success', ['name' => $data['name']]));
     }
 
     public function show(Portfolio $portfolio)
     {
-        return view('portfolio.show', ['portfolio' => $portfolio]);
+        return view('portfolio.show', [
+            'portfolio' => $portfolio,
+        ]);
     }
 
     public function edit(Portfolio $portfolio)
     {
-        return view('portfolio.edit', ['portfolio' => $portfolio]);
+        return view('portfolio.edit', [
+            'portfolio' => $portfolio,
+        ]);
     }
 
-    public function update(PortfolioRequest $request, Portfolio $portfolio): RedirectResponse
+    public function update(PortfolioRequest $request, Portfolio $portfolio)
     {
         $data = $request->validated();
+
         $portfolio->update($data);
 
         return to_route('portfolio.show', $portfolio)
-            ->with('message', 'Les modifications sur le portfolio ont été enregistrées.');
+            ->with('message', trans('portfolio.update.success', ['name' => $portfolio->name]));
     }
 
-    public function destroy(Portfolio $portfolio): RedirectResponse
+    public function destroy(Portfolio $portfolio)
     {
         $portfolio->delete();
 
         return to_route('portfolio.index')
-            ->with('message', 'Le portfolio, les comptes et les opérations ont été supprimés.');
+            ->with('message', trans('portfolio.destroy.success', ['name' => $portfolio->name]));
     }
 }
