@@ -33,9 +33,9 @@ return [
     ],
     'boolean' => 'The :attribute field must be true or false.',
     'can' => 'The :attribute field contains an unauthorized value.',
-    'confirmed' => 'The :attribute field confirmation does not match.',
+    'confirmed' => 'Le champ de confirmation « :attribute » ne correspond pas.',
     'contains' => 'The :attribute field is missing a required value.',
-    'current_password' => 'The password is incorrect.',
+    'current_password' => 'Le mot de passe est incorrect.',
     'date' => 'The :attribute field must be a valid date.',
     'date_equals' => 'The :attribute field must be a date equal to :date.',
     'date_format' => 'The :attribute field must match the format :format.',
@@ -60,7 +60,7 @@ return [
         'array' => 'The :attribute field must have more than :value items.',
         'file' => 'The :attribute field must be greater than :value kilobytes.',
         'numeric' => 'The :attribute field must be greater than :value.',
-        'string' => 'The :attribute field must be greater than :value characters.',
+        'string' => 'Le champ « :attribute » doit contenir plus de :value caractères.',
     ],
     'gte' => [
         'array' => 'The :attribute field must have :value items or more.',
@@ -99,7 +99,7 @@ return [
         'numeric' => 'The :attribute field must not be greater than :max.',
 
         // 'string' => 'The :attribute field must not be greater than :max characters.',
-        'string' => 'Le champ :attribute est limité à :max caractères.',
+        'string' => 'Le champ « :attribute » est limité à :max caractères.',
     ],
 
     'max_digits' => 'The :attribute field must not have more than :max digits.',
@@ -109,7 +109,7 @@ return [
         'array' => 'The :attribute field must have at least :min items.',
         'file' => 'The :attribute field must be at least :min kilobytes.',
         'numeric' => 'The :attribute field must be at least :min.',
-        'string' => 'The :attribute field must be at least :min characters.',
+        'string' => 'Le champ « :attribute » doit contenir au moins :min caractères.',
     ],
     'min_digits' => 'The :attribute field must have at least :min digits.',
     'missing' => 'The :attribute field must be missing.',
@@ -139,7 +139,7 @@ return [
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute field format is invalid.',
 
-    'required' => 'Le champ :attribute est obligatoire.',
+    'required' => 'Le champ « :attribute » est obligatoire.',
 
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
