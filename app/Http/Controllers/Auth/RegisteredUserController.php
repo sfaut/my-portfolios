@@ -9,34 +9,38 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
     public function create(): View
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        Validator::validate(
+            data: $request->all(),
+            rules: [
+                'last_name' => ['required', 'string', 'max:30'],
+                'first_name' => ['required', 'string', 'max:30'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:100', 'unique:'.User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ],
+            attributes: [
+                'last_name' => 'Nom',
+                'first_name' => 'Prénom',
+                'email' => 'E-mail',
+                'password' => 'Mot de passe',
+            ],
+        );
 
         $user = User::create([
-            'name' => $request->name,
+            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -45,6 +49,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return to_route('portfolio.index');
     }
 }
