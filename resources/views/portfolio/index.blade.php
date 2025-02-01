@@ -23,6 +23,7 @@
     <div class="max-w-2xl mx-auto space-y-6 pb-6">
 
         @foreach($portfolios as $portfolio)
+
             <a
                 href="{{ route('portfolio.show', $portfolio) }}"
 
@@ -30,21 +31,23 @@
                     'block', 'flex', 'rounded-md',
                     'bg-white', 'p-4', 'shadow',
                     'hover:bg-indigo-700', 'hover:text-white',
-                    'transition-all', 'duration-200', 'hover:scale-101',
+                    'transition-all', 'duration-200', 'hover:scale-102',
+                    'items-center',
                 ])
             >
-                    <div>
-                        <h3 class="text-xl font-semibold">{{ $portfolio->name }}</h3>
-                        <p class="text-sm text-slate-400">{{ trim($portfolio->description) ?? '--' }}</p>
-                    </div>
+                <div>
+                    <h3 class="text-xl font-semibold">{{ $portfolio->name }}</h3>
+                    <p class="text-sm text-slate-400">{{ trim($portfolio->description) ?? '--' }}</p>
+                </div>
 
-                    <svg class="self-center ml-auto" preserveAspectRatio="none" width="40" height="40" viewBox="0 0 10 10">
-                        <polyline
-                            points="3,1 7,5 3,9"
-                            stroke="currentColor" stroke-width="0.4" fill="none"
-                        />
-                    </svg>
+                <svg class="self-center ml-auto" preserveAspectRatio="none" width="40" height="40" viewBox="0 0 10 10">
+                    <polyline
+                        points="3,1 7,5 3,9"
+                        stroke="currentColor" stroke-width="0.4" fill="none"
+                    />
+                </svg>
             </a>
+
         @endforeach
 
         <a
@@ -56,10 +59,9 @@
                 'border-2', 'border-dashed',
                 'hover:border-indigo-800', 'hover:text-indigo-800',
                 'text-gray-400', 'text-center',
-                'transition-all', 'duration-200', 'hover:scale-101',
+                'transition-all', 'duration-200', 'hover:scale-102',
             ])
         >
-
             <svg width="30" height="30" viewBox="0 0 10 10" fill="none" class="mx-auto">
                 <line x1="5" y1="2.5" x2="5" y2="7.5" stroke="currentColor" stroke-width="0.5"/>
                 <line x1="2.5" y1="5" x2="7.5" y2="5" stroke="currentColor" stroke-width="0.5"/>
