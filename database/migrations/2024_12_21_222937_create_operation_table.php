@@ -23,6 +23,8 @@ return new class extends Migration
             CREATE OR REPLACE VIEW account_reports AS
             SELECT ALL
                 a.id, a.name,
+                a.portfolio_id,
+                a.deleted_at,
                 COUNT(o.id) AS operation_count,
                 MIN(o.delivery_at) AS operation_first_at,
                 MAX(o.delivery_at) AS operation_last_at,
@@ -39,7 +41,10 @@ return new class extends Migration
             WITH dataset AS (
                 -- CTE pour calcul du cumul global avant filtrage
                 SELECT ALL
-                    operations.*,
+                    id, description,
+                    amount, delivery_at,
+                    account_id,
+                    created_at, updated_at,
                     SUM(amount) OVER (
                         PARTITION BY account_id
                         ORDER BY delivery_at ASC, id ASC
