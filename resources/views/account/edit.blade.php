@@ -35,7 +35,12 @@
                 Le compte et ses opérations pourront être désarchivés.
             </p>
         </header>
-        <form method="post" action="{{ route('account.destroy', $account) }}" class="space-y-6">
+        <form
+            method="post"
+            action="{{ route('account.destroy', $account) }}"
+            class="space-y-6"
+            onclick="return confirm('Êtes-vous sûr et certain de vouloir archiver ce compte ?')"
+        >
             @method('delete')
             @csrf
 
