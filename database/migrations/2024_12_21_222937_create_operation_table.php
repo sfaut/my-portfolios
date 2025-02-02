@@ -20,7 +20,7 @@ return new class extends Migration
 
         DB::statement(
             <<<SQL
-            CREATE VIEW account_reports AS
+            CREATE OR REPLACE VIEW account_reports AS
             SELECT ALL
                 a.id, a.name,
                 COUNT(o.id) AS operation_count,
@@ -35,7 +35,7 @@ return new class extends Migration
 
         DB::statement(
             <<<SQL
-            CREATE VIEW operation_reports AS
+            CREATE OR REPLACE VIEW operation_reports AS
             WITH dataset AS (
                 -- CTE pour calcul du cumul global avant filtrage
                 SELECT ALL
