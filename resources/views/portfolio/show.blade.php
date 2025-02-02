@@ -29,7 +29,7 @@
 
     <div class="max-w-6xl mx-auto grid gap-6 grid-cols-3">
 
-        @foreach ($portfolio->accountsReport->where('is_active', 1) as $account)
+        @foreach ($portfolio->accountsReport as $account)
 
             <a
                 href="{{ route('account.show', ['account' => $account]) }}"
@@ -41,8 +41,8 @@
                     'rounded-md',
                     'hover:bg-indigo-700', 'hover:text-white', 'hover:ring-indigo-700',
                     'transition-all', 'duration-100', 'ease-linear', 'hover:scale-103',
-                    'opacity-50' => !$account->is_active,
-                    'hover:opacity-100' => !$account->is_active,
+                    'opacity-50' => ($account->deleted_at !== null),
+                    'hover:opacity-100' => ($account->deleted_at !== null),
                 ])
             >
                 <div class="truncate">
