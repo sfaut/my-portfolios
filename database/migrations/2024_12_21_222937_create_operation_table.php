@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
-            $table->string('description', length: 100);
+            $table->string('description', length: 150);
             $table->decimal('amount', total: 10, places: 2);
             $table->date('delivery_at')->comment('Date de livraison du produit ou du service');
             $table->foreignId('account_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
