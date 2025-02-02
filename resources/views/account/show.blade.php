@@ -27,11 +27,11 @@
             <thead class="bg-gray-100 text-xs font-semibold uppercase tracking-wide">
                 <tr>
                     <th class="border px-3 py-2">ID</th>
-                    <th class="border px-3 py-2">Date opération</th>
+                    <th class="border px-3 py-2 whitespace-nowrap">Date opération</th>
                     <th class="border px-3 py-2">Description</th>
                     <th class="border px-3 py-2 whitespace-nowrap">Montant (€)</th>
                     <th class="border px-3 py-2 whitespace-nowrap">Solde (€)</th>
-                    <th class="border px-3 py-2">Horodatage création</th>
+                    <th class="border px-3 py-2 whitespace-nowrap">Horodatage création</th>
                     <th class="border px-3 py-2">Action</th>
                 </tr>
             </thead>
@@ -57,7 +57,7 @@
                         ])>
                             {{ Number::format($operation->amount_running_sum, precision: 2, locale: 'fr') }}
                         </td>
-                        <td class="border px-3 py-2 text-center">{{ $operation->created_at?->format('d/m/Y H:i:s') }}</td>
+                        <td class="border px-3 py-2 text-center whitespace-nowrap">{{ $operation->created_at?->format('d/m/Y H:i:s') }}</td>
                         <td class="border px-3 py-2 text-center">
                             <a href="{{ route('operation.edit', $operation) }}" class="text-xs font-semibold uppercase text-indigo-700 underline hover:no-underline">Modifier</a>
                         </td>
