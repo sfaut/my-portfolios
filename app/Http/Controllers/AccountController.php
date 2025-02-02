@@ -18,7 +18,9 @@ class AccountController extends Controller
 
     public function create(Portfolio $portfolio)
     {
-        return view('account.create', ['portfolio' => $portfolio]);
+        return view('account.create', [
+            'portfolio' => $portfolio,
+        ]);
     }
 
     public function store(AccountRequest $request, Portfolio $portfolio): RedirectResponse
@@ -34,11 +36,8 @@ class AccountController extends Controller
 
     public function show(Account $account)
     {
-        // $operations = OperationReport::where('account_id', $account->id)->get();
-
         return view('account.show', [
             'account' => $account,
-            // 'operations' => $operations,
         ]);
     }
 
@@ -54,12 +53,15 @@ class AccountController extends Controller
         $data = $request->validated();
         $account->update($data);
 
-        return to_route('account.show', $account)
+        return to_route('account.show', ['account' => $account])
             ->with('alert', 'Les modifications sur le compte ont été enregistrées.');
     }
 
-    public function destroy(string $id)
+    public function destroy(Account $account)
     {
-        //
+        $account->delete();
+
+        return to_route('portfolio.show', ['portfolio' => $account->portfolio])
+            ->with('message', "Le compte « {$account->name} » a été archivé avec succès.");
     }
 }
