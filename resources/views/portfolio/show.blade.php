@@ -47,7 +47,15 @@
             >
                 <div class="truncate">
                     <div class="font-semibold truncate">{{ $account->name }}</div>
-                    <div class="text-xs text-gray-400">{{ optional($account->operation_last_at)->format('d/m/Y') }}</div>
+                    <div class="text-xs text-gray-400">
+                        @if ($account->operation_last_at !== null)
+                            {{ optional($account->operation_first_at)->format('d/m/Y') }}
+                            ~
+                            {{ optional($account->operation_last_at)->format('d/m/Y') }}
+                        @else
+                            --
+                        @endif
+                    </div>
                 </div>
                 <div @class([
                     'text-right',
