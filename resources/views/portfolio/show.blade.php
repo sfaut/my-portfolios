@@ -39,8 +39,8 @@
                     'grid', 'grid-cols-[1fr_min-content]',
                     'block', 'bg-white', 'shadow', 'p-4',
                     'rounded-md',
-                    'hover:bg-indigo-700', 'hover:text-white', 'hover:ring-indigo-700',
-                    'transition-all', 'duration-100', 'ease-linear', 'hover:scale-103',
+                    'hover:bg-indigo-700', 'hover:text-white',
+                    'transition-all', 'duration-200', 'ease-linear', 'hover:scale-102',
                     'opacity-50' => ($account->deleted_at !== null),
                     'hover:opacity-100' => ($account->deleted_at !== null),
                 ])
