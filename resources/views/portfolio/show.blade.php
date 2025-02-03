@@ -73,11 +73,12 @@
             href="{{ route('account.create', $portfolio) }}"
             @class([
                 'col-start-1', 'block',
-                'rounded-md', 'bg-white', 'shadow', 'p-4',
-                'text-center', 'text-gray-400',
+                'rounded-md', 'bg-white', 'shadow', 'hover:shadow-md',
+                'p-4',
                 'border-2', 'border-dashed', 'border-gray-400',
                 'hover:border-indigo-700', 'hover:text-indigo-700',
-                'transition-all', 'duration-100', 'ease-linear', 'hover:scale-103',
+                'text-center', 'text-gray-400',
+                'transition-all', 'duration-200', 'ease-linear', 'hover:scale-102',
             ])
         >
             <svg width="30" height="30" viewBox="0 0 10 10" fill="none" class="mx-auto">

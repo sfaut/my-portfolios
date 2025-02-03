@@ -37,7 +37,7 @@
             >
                 <div>
                     <h3 class="text-xl font-semibold">{{ $portfolio->name }}</h3>
-                    <p class="text-sm text-slate-400">{{ trim($portfolio->description) ?? '--' }}</p>
+                    <p class="text-sm text-gray-400">{{ trim($portfolio->description) ?? '--' }}</p>
                 </div>
 
                 <svg class="self-center ml-auto" preserveAspectRatio="none" width="40" height="40" viewBox="0 0 10 10">
@@ -53,13 +53,13 @@
         <a
             href="{{ route('portfolio.create') }}"
             @class([
-                'block', 'rounded-md',
-                'bg-white', 'shadow', 'hover:shadow-md',
+                'block',
+                'rounded-md', 'bg-white', 'shadow', 'hover:shadow-md',
                 'p-4',
-                'border-2', 'border-dashed',
-                'hover:border-indigo-800', 'hover:text-indigo-800',
-                'text-gray-400', 'text-center',
-                'transition-all', 'duration-200', 'hover:scale-102',
+                'border-2', 'border-dashed', 'border-gray-400',
+                'hover:border-indigo-700', 'hover:text-indigo-700',
+                'text-center', 'text-gray-400',
+                'transition-all', 'duration-200', 'ease-linear', 'hover:scale-102',
             ])
         >
             <svg width="30" height="30" viewBox="0 0 10 10" fill="none" class="mx-auto">
@@ -67,8 +67,7 @@
                 <line x1="2.5" y1="5" x2="7.5" y2="5" stroke="currentColor" stroke-width="0.5"/>
                 <circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="0.5"/>
             </svg>
-
-            <h3 class="font-semibold">Créer un portfolio</h3>
+            <h3>Créer un portfolio</h3>
         </a>
     </div>
 
