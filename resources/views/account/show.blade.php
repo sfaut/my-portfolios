@@ -27,8 +27,8 @@
             <thead class="bg-gray-100 text-xs font-semibold uppercase tracking-wide">
                 <tr>
                     <th class="border px-3 py-2">ID</th>
-                    <th class="border px-3 py-2 whitespace-nowrap">Date opération</th>
-                    <th class="border px-3 py-2">Description</th>
+                    <th class="border px-3 py-2 whitespace-nowrap">Date effective</th>
+                    <th class="border px-3 py-2">Libellé</th>
                     <th class="border px-3 py-2 whitespace-nowrap">Montant (€)</th>
                     <th class="border px-3 py-2 whitespace-nowrap">Solde (€)</th>
                     <th class="border px-3 py-2 whitespace-nowrap">Horodatage création</th>
@@ -45,7 +45,7 @@
                     >
                         <td class="border px-3 py-2 text-right">{{ $operation->id }}</td>
                         <td class="border px-3 py-2 text-center">{{ date('d/m/Y', strtotime($operation->delivery_at)) }}</td>
-                        <td class="border px-3 py-2">{{ $operation->description }}</td>
+                        <td class="border px-3 py-2">{{ $operation->label }}</td>
                         <td class="border px-3 py-2 text-right whitespace-nowrap">
                             {{ Number::format($operation->amount, precision: 2, locale: 'fr') }}
                         </td>

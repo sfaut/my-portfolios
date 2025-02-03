@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
-            $table->string('description', length: 150);
+            $table->string('label', length: 150);
             $table->decimal('amount', total: 10, places: 2);
             $table->date('delivery_at')->comment('Date de livraison du produit ou du service');
             $table->foreignId('account_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
@@ -41,7 +41,7 @@ return new class extends Migration
             WITH dataset AS (
                 -- CTE pour calcul du cumul global avant filtrage
                 SELECT ALL
-                    id, description,
+                    id, label,
                     amount, delivery_at,
                     account_id,
                     created_at, updated_at,

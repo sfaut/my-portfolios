@@ -24,14 +24,14 @@
         </div>
 
         <div>
-            <x-input-label for="description" value="Description"/>
+            <x-input-label for="label" value="Libellé"/>
             <textarea
-                id="description"
+                id="label"
                 rows="4"
-                name="description"
+                name="label"
                 class="resize-none mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
-            >{{ old('description', $account->description ?? '') }}</textarea>
-            <x-input-error class="mt-2" :messages="$errors->get('description')"/>
+            >{{ old('label', $account->label ?? '') }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('label')"/>
         </div>
 
         <div class="flex items-center gap-5">

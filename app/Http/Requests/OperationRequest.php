@@ -16,7 +16,7 @@ class OperationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => ['required', 'string', 'max:100'],
+            'label' => ['required', 'string', 'max:150'],
             'amount' => ['required', 'numeric', 'max:99999999', 'decimal:0,2'],
             'delivery_at' => ['required', 'date'], // https://laravel.com/docs/11.x/validation#rule-date-format
         ];
@@ -25,9 +25,9 @@ class OperationRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'description' => 'Description',
+            'label' => 'Libellé',
             'amount' => 'Montant',
-            'delivery_at' => 'Date de livraison',
+            'delivery_at' => 'Date effective',
         ];
     }
 }
