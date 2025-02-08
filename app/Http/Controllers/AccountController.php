@@ -36,8 +36,19 @@ class AccountController extends Controller
 
     public function show(Account $account)
     {
+        $operations = $account->operationsReport()->paginate(20);
+
+        // Go to last page by default
+        if (!request()->has('page')) {
+            return to_route('account.show', [
+                'account' => $account,
+                'page' => $operations->lastPage(),
+            ]);
+        }
+
         return view('account.show', [
             'account' => $account,
+            'operations' => $operations,
         ]);
     }
 

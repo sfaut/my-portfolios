@@ -18,11 +18,12 @@
         </x-alert>
     @endif
 
-    <div class="max-w-6xl mx-auto mb-6 flex justify-end">
-        <x-link.primary :target="route('operation.create', $account)">Écrire une opération</x-link>
+    <div class="max-w-6xl mx-auto mb-6 flex justify-between">
+        <x-link.primary :target="route('operation.create', $account)">Écrire une opération</x-link.primary>
+        {{ $operations->links('pagination.narrow') }}
     </div>
 
-    <div class="max-w-6xl mx-auto rounded-lg shadow mt-6 mb-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto rounded-lg shadow mt-6 mb-6 -overflow-hidden">
         <table class="w-full">
             <thead class="bg-gray-100 text-xs font-semibold uppercase tracking-wide">
                 <tr>
@@ -36,7 +37,7 @@
                 </tr>
             </thead>
             <tbody class="bg-white text-sm">
-                @foreach ($account->operationsReport as $operation)
+                @foreach ($operations as $operation)
                     <tr
                         @class([
                             'hover:bg-yellow-100',
