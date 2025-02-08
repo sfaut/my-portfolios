@@ -8,7 +8,7 @@
     <nav @class([
         'grid', 'grid-cols-5',
         'shadow',
-        '__divide-x',
+        'divide-x',
         'text-xs', 'text-gray-600',
     ])>
 
@@ -51,7 +51,7 @@
         </a>
 
         <div class="inline-flex items-center justify-center bg-white p-2 tracking-widest">
-            P. {{ $paginator->currentPage() }}
+            Page {{ $paginator->currentPage() }}
         </div>
 
         {{-- Next page --}}
