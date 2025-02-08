@@ -6,7 +6,7 @@
 @if ($paginator->hasPages())
 
     <nav @class([
-        'grid', 'grid-cols-5',
+        'grid', 'grid-flow-col', 'auto-cols-min',
         'shadow',
         'divide-x',
         'text-xs', 'text-gray-600',
@@ -50,8 +50,9 @@
             </svg>
         </a>
 
-        <div class="inline-flex items-center justify-center bg-white p-2 tracking-widest">
+        <div class="inline-flex items-center justify-center bg-white p-2 tracking-widest text-nowrap">
             Page {{ $paginator->currentPage() }}
+            / {{ $paginator->lastPage() }}
         </div>
 
         {{-- Next page --}}
