@@ -60,7 +60,15 @@
                         </td>
                         <td class="border px-3 py-2 text-center whitespace-nowrap">{{ $operation->created_at?->format('d/m/Y H:i:s') }}</td>
                         <td class="border px-3 py-2 text-center">
-                            <a href="{{ route('operation.edit', $operation) }}" class="text-xs font-semibold uppercase text-indigo-700 underline hover:no-underline">Modifier</a>
+                            <a
+                                href="{{ route('operation.edit', $operation) }}"
+                                @class([
+                                    'text-xs', 'font-semibold', 'uppercase', 'text-indigo-700',
+                                    'no-underline', 'hover:underline',
+                                ])
+                            >
+                                Modifier
+                            </a>
                         </td>
                     </tr>
                 @empty
