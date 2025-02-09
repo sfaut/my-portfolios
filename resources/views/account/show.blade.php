@@ -41,7 +41,7 @@
                     <tr
                         @class([
                             'hover:bg-yellow-100',
-                            'bg-success-100' => ($operation->id === session('updated_operation_id'))
+                            'bg-success-200' => ($operation->id === session('updated_operation_id'))
                         ])
                     >
                         <td class="border px-3 py-2 text-right">{{ $operation->id }}</td>

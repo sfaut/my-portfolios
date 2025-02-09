@@ -3,35 +3,28 @@
 ])
 
 @php
+
     // https://laravel.com/api/11.x/Illuminate/View/ComponentAttributeBag.html
 
-    $colors = [
-        'info' => 'sky',
-        'success' => 'emerald',
-        'warning' => 'amber',
-        'danger' => 'rose',
+    $styles = [
+        'info' => ['text-sky-700', 'bg-sky-200', 'ring-sky-300'],
+        'success' => ['text-success-700', 'bg-success-200', 'ring-success-300'],
+        'warning' => ['text-amber-700', 'bg-amber-200', 'ring-amber-300'],
+        'danger' => ['text-rose-700', 'bg-rose-200', 'ring-rose-300'],
     ];
 
-    if (!isset($colors[$type])) {
-        $type = 'info';
-    }
-
-    $color = $colors[$type];
-
-    $asset = [
-        "text-{$color}-800", "bg-{$color}-200",
-        'ring-1', "ring-{$color}-500", 'shadow-md',
-        // "dark:bg-{$color}-800", "dark:text-{$color}-400",
-    ];
+    $style = $styles[$type] ?? $styles['info'];
 
     $attributes = $attributes
         ->class([
             'whitespace-pre-line',
-            'rounded-md',
+            'shadow-md', 'rounded-md',
             'flex', 'items-center',
             'px-5', 'gap-5',
-        ])->merge(['class' => implode(' ', $asset)]);
+            'ring-1',
+        ])->merge(['class' => implode(' ', $style)])
     ;
+
 @endphp
 
 <div {{ $attributes }}>
