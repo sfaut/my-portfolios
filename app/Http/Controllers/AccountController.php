@@ -40,6 +40,7 @@ class AccountController extends Controller
 
         // Go to last page by default
         if (!request()->has('page')) {
+            request()->session()->reflash();
             return to_route('account.show', [
                 'account' => $account,
                 'page' => $operations->lastPage(),
