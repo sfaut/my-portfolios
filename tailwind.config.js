@@ -72,12 +72,12 @@ const config = {
     // ],
 
     // https://tailwindcss.com/docs/content-configuration#safelisting-classes
-    safelist: [
-        {
-            pattern: /blue|green|yellow|red|sky|emerald|amber|pink|rose/,
-            variants: ["hover", "focus", "active"],
-        },
-    ],
+    // safelist: [
+    //     {
+    //         pattern: /sky|emerald|amber|rose/,
+    //         variants: ["hover", "focus", "active"],
+    //     },
+    // ],
 };
 
 export default config;
