@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody class="bg-white text-sm">
-                @foreach ($operations as $operation)
+                @forelse ($operations as $operation)
                     <tr
                         @class([
                             'hover:bg-yellow-100',
@@ -63,7 +63,14 @@
                             <a href="{{ route('operation.edit', $operation) }}" class="text-xs font-semibold uppercase text-indigo-700 underline hover:no-underline">Modifier</a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="7" class="p-4 text-center">
+                            Pas encore d'opérations.<br>
+                            Mais ça ne saurait tarder...<br>
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
